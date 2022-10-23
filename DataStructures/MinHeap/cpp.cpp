@@ -36,8 +36,8 @@ class MinHeap {
         }
     }
 
-    void heapifyDown() {
-        size_t idx = 0;
+    void heapifyDown(size_t idx = 0) {
+        
         // TODO: Optimise (parent idx calculated quite a few times here!)
         while(hasLeftChild(idx)) {
             size_t smallerChildIndex = leftChildIdx(idx);
@@ -73,6 +73,20 @@ public:
 
         return item;
     }
+    
+    bool remove(T value) {
+        for (size_t i = 0; i < heap.size(); i++) {
+            if (value == heap[i]) {
+                heap[i] = heap.back();
+                heap.pop_back();
+                
+                heapifyDown(i);
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
     void insert(T value) {
         // insert and bubble up
@@ -87,6 +101,7 @@ public:
         std::cout << std::endl;
     }
 };
+
 
 int main(int argc, char** argv) {
     MinHeap<int> minHeap;
