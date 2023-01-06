@@ -1,0 +1,27 @@
+import random
+from collections import OrderedDict
+
+def sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    count_arr = OrderedDict()
+    for n in arr:
+        if n in count_arr:
+            count_arr[n] += 1
+        else:
+            count_arr[n] = 1
+
+    
+
+
+def main():
+    random.seed(0)
+
+    arr = [random.randint(0, 10) for _ in range(20)]
+    print("Initial arr:", arr)
+    sorted_arr = sort(arr)
+    print("Sorted arr:", sorted_arr)
+
+if __name__ == "__main__":
+    main()
